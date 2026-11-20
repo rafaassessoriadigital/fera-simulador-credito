@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Fera | Simulador de Crédito Rápido</title>
+  <meta name="description" content="Simule valores, prazos e descubra em 30 segundos as linhas de crédito disponíveis para o seu perfil.">
+
+  <!-- Open Graph / WhatsApp / Redes Sociais -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:site_name" content="Fera Soluções Financeiras">
+  <meta property="og:url" content="https://fera-simulador-credito.netlify.app/">
+  <meta property="og:title" content="Fera Simulador de Crédito Rápido">
+  <meta property="og:description" content="Simule valores, prazos e descubra em 30 segundos as linhas de crédito disponíveis para o seu perfil.">
+  <meta property="og:image" content="https://fera-simulador-credito.netlify.app/fundo-fera.png">
+  <meta property="og:image:type" content="image/png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Fera Simulador de Crédito Rápido">
+  <meta name="twitter:description" content="Simule valores, prazos e descubra em 30 segundos as linhas de crédito disponíveis para o seu perfil.">
+  <meta name="twitter:image" content="https://fera-simulador-credito.netlify.app/fundo-fera.png">
+
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="app-container">
+    <!-- CABEÇALHO -->
+    <header class="app-header">
+      <div class="brand">
+        <span class="brand-badge">FERA</span>
+        <h1>Simulador de Crédito Rápido</h1>
+      </div>
+      <p class="subtitle">Descubra em 30 segundos a melhor linha de crédito para o seu perfil.</p>
+    </header>
+
+    <!-- ETAPA 1: VALORES E PRAZO -->
+    <main class="card-app" id="etapa-1">
+      <div class="step-indicator">Passo 1 de 3 • Simulação</div>
+
+      <div class="input-group">
+        <label for="valor-range">Quanto você precisa?</label>
+        <div class="valor-display" id="valor-display">R$ 3.000,00</div>
+        <input type="range" id="valor-range" min="300" max="50000" step="100" value="3000">
+        <div class="range-limits">
+          <span>R$ 300</span>
+          <span>R$ 50.000</span>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label>Em quantas vezes deseja pagar?</label>
+        <div class="parcelas-grid" id="parcelas-grid">
+          <button type="button" class="parcela-btn" data-meses="6">6x</button>
+          <button type="button" class="parcela-btn" data-meses="12">12x</button>
+          <button type="button" class="parcela-btn active" data-meses="24">24x</button>
+          <button type="button" class="parcela-btn" data-meses="36">36x</button>
+          <button type="button" class="parcela-btn" data-meses="48">48x</button>
+          <button type="button" class="parcela-btn" data-meses="60">60x</button>
+        </div>
+      </div>
+
+      <div class="estimativa-box">
+        <span>Parcela estimada a partir de:</span>
+        <strong id="parcela-estimada">R$ 168,50 / mês</strong>
+        <small>*Valor aproximado. A taxa final depende do convênio/perfil.</small>
+      </div>
+
+      <button type="button" class="btn-primary" onclick="irParaEtapa(2)">
+        Continuar para Pré-Análise →
+      </button>
+    </main>
+
+    <!-- ETAPA 2: PERFIL DE CRÉDITO -->
+    <section class="card-app hidden" id="etapa-2">
+      <div class="step-indicator">Passo 2 de 3 • Perfil de Crédito</div>
+
+      <div class="input-group">
+        <label for="perfil-cliente">Qual é a sua ocupação / fonte de renda?</label>
+        <select id="perfil-cliente">
+          <option value="inss">Aposentado ou Pensionista (INSS)</option>
+          <option value="clt_fgts">Trabalhador CLT com Saldo FGTS</option>
+          <option value="clt_consignado">Assalariado CLT (Crédito do Trabalhador)</option>
+          <option value="servidor">Servidor Público (Federal, Estadual ou Municipal)</option>
+          <option value="bolsa_familia">Beneficiário Bolsa Família / BPC-LOAS</option>
+          <option value="autonomo">Autônomo / MEI / Outros</option>
+        </select>
+      </div>
+
+      <div class="input-group">
+        <label for="situacao-cpf">Situação atual do seu CPF:</label>
+        <select id="situacao-cpf">
+          <option value="limpo">Sem restrições no nome</option>
+          <option value="negativado">Com restrição (SPC / Serasa)</option>
+        </select>
+      </div>
+
+      <div class="btn-row">
+        <button type="button" class="btn-secondary" onclick="irParaEtapa(1)">← Voltar</button>
+        <button type="button" class="btn-primary" onclick="irParaEtapa(3)">Continuar para Cadastro →</button>
+      </div>
+    </section>
+
+    <!-- ETAPA 3: FICHA CADASTRAL COMPLETA -->
+    <section class="card-app hidden" id="etapa-3">
+      <div class="step-indicator">Passo 3 de 3 • Dados para Consulta</div>
+      <p class="aviso-topo">Preencha seus dados para verificarmos as financeiras disponíveis no seu CPF.</p>
+
+      <h3 class="section-subtitle">Dados Pessoais</h3>
+
+      <div class="input-group">
+        <label for="nome-cliente">Nome completo *</label>
+        <input type="text" id="nome-cliente" placeholder="Digite seu nome completo" autocomplete="name">
+      </div>
+
+      <div class="grid-2-col">
+        <div class="input-group">
+          <label for="cpf-cliente">CPF *</label>
+          <input type="text" id="cpf-cliente" placeholder="000.000.000-00" maxlength="14" inputmode="numeric">
+        </div>
+        <div class="input-group">
+          <label for="nascimento-cliente">Data de nascimento *</label>
+          <input type="date" id="nascimento-cliente">
+        </div>
+      </div>
+
+      <div class="grid-2-col">
+        <div class="input-group">
+          <label for="celular-cliente">Celular / WhatsApp *</label>
+          <input type="text" id="celular-cliente" placeholder="(00) 00000-0000" maxlength="15" inputmode="tel" autocomplete="tel">
+        </div>
+        <div class="input-group">
+          <label for="email-cliente">E-mail (opcional)</label>
+          <input type="email" id="email-cliente" placeholder="seu@email.com" autocomplete="email">
+        </div>
+      </div>
+
+      <h3 class="section-subtitle">Endereço</h3>
+
+      <div class="grid-cep">
+        <div class="input-group">
+          <label for="cep-cliente">CEP *</label>
+          <input type="text" id="cep-cliente" placeholder="00000-000" maxlength="9" inputmode="numeric" autocomplete="postal-code">
+        </div>
+        <div class="input-group">
+          <label for="uf-cliente">UF *</label>
+          <select id="uf-cliente">
+            <option value="">UF</option>
+            <option value="AC">AC</option><option value="AL">AL</option><option value="AP">AP</option>
+            <option value="AM">AM</option><option value="BA">BA</option><option value="CE">CE</option>
+            <option value="DF">DF</option><option value="ES">ES</option><option value="GO">GO</option>
+            <option value="MA">MA</option><option value="MT">MT</option><option value="MS">MS</option>
+            <option value="MG">MG</option><option value="PA">PA</option><option value="PB">PB</option>
+            <option value="PR" selected>PR</option><option value="PE">PE</option><option value="PI">PI</option>
+            <option value="RJ">RJ</option><option value="RN">RN</option><option value="RS">RS</option>
+            <option value="RO">RO</option><option value="RR">RR</option><option value="SC">SC</option>
+            <option value="SP">SP</option><option value="SE">SE</option><option value="TO">TO</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="input-group">
+        <label for="logradouro-cliente">Logradouro (Rua / Av.) *</label>
+        <input type="text" id="logradouro-cliente" placeholder="Nome da rua ou avenida" autocomplete="street-address">
+      </div>
+
+      <div class="grid-num-comp">
+        <div class="input-group">
+          <label for="numero-cliente">Número *</label>
+          <input type="text" id="numero-cliente" placeholder="Nº" inputmode="numeric">
+        </div>
+        <div class="input-group">
+          <label for="complemento-cliente">Complemento</label>
+          <input type="text" id="complemento-cliente" placeholder="Casa, Apto, Bloco...">
+        </div>
+      </div>
+
+      <div class="grid-2-col">
+        <div class="input-group">
+          <label for="bairro-cliente">Bairro *</label>
+          <input type="text" id="bairro-cliente" placeholder="Seu bairro">
+        </div>
+        <div class="input-group">
+          <label for="cidade-cliente">Cidade *</label>
+          <input type="text" id="cidade-cliente" placeholder="Sua cidade">
+        </div>
+      </div>
+
+      <p id="msg-erro" class="msg-erro hidden">Por favor, preencha todos os campos obrigatórios (*).</p>
+
+      <div class="btn-row">
+        <button type="button" class="btn-secondary" onclick="irParaEtapa(2)">← Voltar</button>
+        <button type="button" class="btn-primary" onclick="gerarResultado()">Ver Liberação →</button>
+      </div>
+    </section>
+
+    <!-- ETAPA 4: RESULTADO FINAL E ENVIO AO WHATSAPP -->
+    <section class="card-app hidden" id="etapa-4">
+      <div class="badge-aprovado">✓ FICHA PRONTA PARA ANÁLISE</div>
+      <h2>Modalidade Recomendada</h2>
+
+      <div class="resumo-card">
+        <div class="resumo-linha">
+          <span>Linha identificada:</span>
+          <strong id="res-modalidade">-</strong>
+        </div>
+        <div class="resumo-linha">
+          <span>Valor solicitado:</span>
+          <strong id="res-valor">-</strong>
+        </div>
+        <div class="resumo-linha">
+          <span>Prazo escolhido:</span>
+          <strong id="res-prazo">-</strong>
+        </div>
+        <div class="resumo-linha">
+          <span>Parcela estimada:</span>
+          <strong id="res-parcela" class="destaque-verde">-</strong>
+        </div>
+      </div>
+
+      <p class="aviso-consultor" id="texto-orientacao"></p>
+
+      <a id="btn-whatsapp" href="#" target="_blank" rel="noopener noreferrer" class="btn-whatsapp">
+        Enviar Ficha e Liberar no WhatsApp
+      </a>
+
+      <button type="button" class="btn-link" onclick="irParaEtapa(1)">Fazer nova simulação</button>
+    </section>
+
+    <footer class="app-footer">
+      <p>Fera Soluções Financeiras • Atendimento Rápido e Seguro</p>
+    </footer>
+
+    <!-- FORMULÁRIO INVISÍVEL PARA DETECÇÃO DO NETLIFY FORMS -->
+    <form name="fichas-fera-credito" method="POST" action="/" data-netlify="true" netlify-honeypot="bot-field" style="position:absolute;left:-9999px;opacity:0;pointer-events:none;" aria-hidden="true">
+      <input type="hidden" name="form-name" value="fichas-fera-credito">
+      <input type="text" name="bot-field" tabindex="-1" autocomplete="off">
+      <input type="text" name="consultor">
+      <input type="text" name="nome">
+      <input type="text" name="cpf">
+      <input type="text" name="nascimento">
+      <input type="text" name="celular">
+      <input type="text" name="email">
+      <input type="text" name="valor_desejado">
+      <input type="text" name="prazo">
+      <input type="text" name="perfil">
+      <input type="text" name="situacao_cpf">
+      <input type="text" name="cep">
+      <input type="text" name="endereco_completo">
+    </form>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

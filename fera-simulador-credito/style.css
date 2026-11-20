@@ -1,0 +1,414 @@
+:root {
+  --bg-page: #eef4fb;
+  --bg-card: rgba(255, 255, 255, 0.88);
+  --bg-input: rgba(255, 255, 255, 0.82);
+  --azul-escuro: #0f294a;
+  --azul-medio: #1d4ed8;
+  --azul-claro: #e0ecfa;
+  --dourado-gradiente: linear-gradient(135deg, #facc15 0%, #eab308 55%, #ca8a04 100%);
+  --whatsapp: #22c55e;
+  --whatsapp-hover: #16a34a;
+  --text-main: #0f172a;
+  --text-muted: #475569;
+  --border: rgba(30, 64, 175, 0.18);
+  --danger: #dc2626;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+}
+
+body {
+  background-color: var(--bg-page);
+  background-image:
+    linear-gradient(rgba(255, 255, 255, 0.35), rgba(238, 244, 251, 0.55)),
+    url("fundo-fera.png");
+  background-size: cover;
+  background-position: center top;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  color: var(--text-main);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 24px 15px;
+}
+
+.app-container {
+  position: relative;
+  width: 100%;
+  max-width: 500px;
+}
+
+.app-header {
+  text-align: center;
+  margin-bottom: 18px;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 14px 18px;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 4px;
+}
+
+.brand-badge {
+  background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
+  color: #ffffff;
+  font-weight: 900;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+.app-header h1 {
+  font-size: 1.32rem;
+  font-weight: 800;
+  color: var(--azul-escuro);
+}
+
+.subtitle {
+  color: var(--text-muted);
+  font-size: 0.88rem;
+}
+
+.card-app {
+  position: relative;
+  background: var(--bg-card);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
+  border-radius: 26px;
+  padding: 24px 22px;
+  box-shadow: 0 20px 45px rgba(15, 41, 74, 0.16);
+}
+
+.hidden {
+  display: none !important;
+}
+
+.step-indicator {
+  font-size: 0.76rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--azul-medio);
+  font-weight: 800;
+  margin-bottom: 12px;
+}
+
+.aviso-topo {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-bottom: 14px;
+}
+
+.section-subtitle {
+  font-size: 0.95rem;
+  color: var(--azul-escuro);
+  border-bottom: 1px solid var(--border);
+  padding-bottom: 6px;
+  margin: 16px 0 12px 0;
+  font-weight: 700;
+}
+
+.input-group {
+  margin-bottom: 15px;
+}
+
+.input-group label {
+  display: block;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.grid-2-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.grid-cep {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 12px;
+}
+
+.grid-num-comp {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 12px;
+}
+
+.valor-display {
+  font-size: 2.2rem;
+  font-weight: 900;
+  background: var(--dourado-gradiente);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 2px 5px rgba(202, 138, 4, 0.25));
+  margin-bottom: 10px;
+}
+
+input[type="range"] {
+  width: 100%;
+  accent-color: #eab308;
+  cursor: pointer;
+  height: 8px;
+  border-radius: 999px;
+}
+
+.range-limits {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  font-weight: 600;
+  margin-top: 6px;
+}
+
+.parcelas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+}
+
+.parcela-btn {
+  background-color: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--azul-escuro);
+  padding: 11px;
+  border-radius: 999px;
+  font-weight: 800;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.parcela-btn:hover {
+  background-color: var(--azul-claro);
+  border-color: var(--azul-medio);
+}
+
+.parcela-btn.active {
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  border-color: #1d4ed8;
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.28);
+}
+
+.estimativa-box {
+  background: rgba(255, 255, 255, 0.78);
+  border-radius: 18px;
+  padding: 15px;
+  text-align: center;
+  margin: 16px 0 18px 0;
+  border: 1px solid rgba(234, 179, 8, 0.5);
+}
+
+.estimativa-box span {
+  display: block;
+  font-size: 0.84rem;
+  color: var(--text-muted);
+  font-weight: 600;
+}
+
+.estimativa-box strong {
+  display: block;
+  font-size: 1.48rem;
+  font-weight: 900;
+  background: var(--dourado-gradiente);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 1px 4px rgba(202, 138, 4, 0.25));
+  margin: 4px 0;
+}
+
+.estimativa-box small {
+  font-size: 0.72rem;
+  color: var(--text-muted);
+}
+
+input[type="text"],
+input[type="email"],
+input[type="date"],
+select {
+  width: 100%;
+  background-color: var(--bg-input);
+  border: 1px solid var(--border);
+  color: var(--text-main);
+  padding: 12px 14px;
+  border-radius: 14px;
+  font-size: 0.92rem;
+  outline: none;
+}
+
+input:focus,
+select:focus {
+  border-color: var(--azul-medio);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.14);
+}
+
+.msg-erro {
+  color: var(--danger);
+  font-size: 0.85rem;
+  margin-bottom: 12px;
+  text-align: center;
+  font-weight: 700;
+}
+
+.btn-primary {
+  width: 100%;
+  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  color: #ffffff;
+  border: none;
+  padding: 15px 20px;
+  border-radius: 999px;
+  font-size: 1rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.28);
+  transition: transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.btn-primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.36);
+}
+
+.btn-row {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.btn-secondary {
+  background-color: rgba(255, 255, 255, 0.82);
+  color: var(--azul-escuro);
+  border: 1px solid var(--border);
+  padding: 14px 18px;
+  border-radius: 999px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.badge-aprovado {
+  display: inline-block;
+  background-color: rgba(34, 197, 94, 0.15);
+  color: #15803d;
+  font-size: 0.78rem;
+  font-weight: 800;
+  padding: 6px 14px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.card-app h2 {
+  font-size: 1.3rem;
+  color: var(--azul-escuro);
+  margin-bottom: 16px;
+}
+
+.resumo-card {
+  background-color: rgba(255, 255, 255, 0.78);
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.resumo-linha {
+  display: flex;
+  justify-content: space-between;
+  padding: 8px 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.9rem;
+}
+
+.resumo-linha:last-child {
+  border-bottom: none;
+}
+
+.destaque-verde {
+  font-weight: 900;
+  background: var(--dourado-gradiente);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.aviso-consultor {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  margin-bottom: 18px;
+  line-height: 1.5;
+}
+
+.btn-whatsapp {
+  display: block;
+  width: 100%;
+  background-color: var(--whatsapp);
+  color: #ffffff;
+  text-align: center;
+  text-decoration: none;
+  padding: 16px 20px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 1rem;
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.28);
+}
+
+.btn-whatsapp:hover {
+  background-color: var(--whatsapp-hover);
+}
+
+.btn-link {
+  display: block;
+  width: 100%;
+  background: none;
+  border: none;
+  color: var(--text-muted);
+  margin-top: 14px;
+  font-size: 0.85rem;
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+.app-footer {
+  text-align: center;
+  margin-top: 16px;
+  font-size: 0.8rem;
+  color: var(--azul-escuro);
+  font-weight: 600;
+  background: rgba(255, 255, 255, 0.72);
+  padding: 8px 14px;
+  border-radius: 999px;
+  display: inline-block;
+  width: 100%;
+}
+
+@media (max-width: 420px) {
+  .grid-2-col {
+    grid-template-columns: 1fr;
+  }
+
+  .card-app {
+    padding: 20px 16px;
+    border-radius: 22px;
+  }
+}
