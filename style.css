@@ -1,16 +1,16 @@
 :root {
-  --bg-page: #dce9f8;
-  --bg-form-card: rgba(248, 251, 255, 0.94);
-  --bg-input: #ffffff;
-  --azul-escuro: #0f294a;
+  --bg-page: #0b192c;
+  --bg-card: rgba(244, 248, 255, 0.86);
+  --bg-input: rgba(255, 255, 255, 0.95);
+  --azul-escuro: #0c2340;
   --azul-medio: #1d4ed8;
-  --azul-claro: #dceafe;
-  --dourado-gradiente: linear-gradient(135deg, #facc15 0%, #eab308 55%, #ca8a04 100%);
+  --azul-claro: #dbeafe;
+  --dourado-gradiente: linear-gradient(135deg, #fde047 0%, #eab308 55%, #b45309 100%);
   --whatsapp: #22c55e;
   --whatsapp-hover: #16a34a;
   --text-main: #0f172a;
-  --text-muted: #475569;
-  --border: rgba(30, 64, 175, 0.22);
+  --text-muted: #334155;
+  --border: rgba(217, 119, 6, 0.35);
   --danger: #dc2626;
 }
 
@@ -21,9 +21,10 @@
   font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
 }
 
-body {
+body.tema-aguia {
+  position: relative;
   background-color: var(--bg-page);
-  background-image: url("fundo-fera.png?v=6");
+  background-image: url("fundo-fera.png?v=7");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -32,24 +33,36 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 20px 14px;
+  padding: 22px 14px;
+}
+
+/* Camada sutil para destacar o formulário sem apagar o cenário das águias */
+body.tema-aguia::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(11, 25, 44, 0.18) 0%, rgba(11, 25, 44, 0.46) 100%);
+  pointer-events: none;
+  z-index: 0;
 }
 
 .app-container {
   position: relative;
-  z-index: 2;
+  z-index: 1;
   width: 100%;
-  max-width: 440px;
+  max-width: 470px;
 }
 
-/* Cabeçalho sem caixa branca cobrindo o topo da arte */
 .app-header {
   text-align: center;
-  margin-bottom: 10px;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 4px 8px;
+  margin-bottom: 14px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  border-radius: 22px;
+  padding: 13px 16px;
+  box-shadow: 0 12px 28px rgba(11, 25, 44, 0.28);
 }
 
 .brand {
@@ -57,54 +70,41 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 2px;
+  margin-bottom: 4px;
 }
 
 .brand-badge {
-  background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
-  color: #ffffff;
+  background: linear-gradient(135deg, #0c2340, #1d4ed8);
+  color: #fde047;
   font-weight: 900;
-  padding: 3px 10px;
+  padding: 4px 12px;
   border-radius: 999px;
-  font-size: 0.82rem;
-  letter-spacing: 1px;
+  font-size: 0.84rem;
+  letter-spacing: 0.8px;
+  border: 1px solid rgba(250, 204, 21, 0.5);
 }
 
 .app-header h1 {
-  font-size: 1.15rem;
+  font-size: 1.24rem;
   font-weight: 800;
   color: var(--azul-escuro);
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
 }
 
 .subtitle {
-  color: var(--text-main);
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
+  color: var(--text-muted);
+  font-size: 0.84rem;
+  font-weight: 500;
 }
 
-/* Base do card */
 .card-app {
   position: relative;
-  border-radius: 24px;
-  padding: 18px 18px;
-}
-
-/* Etapa 1 integrada ao cenário sem caixa branca sólida por cima da arte */
-.etapa-cenario {
-  background: rgba(255, 255, 255, 0.22);
-  backdrop-filter: blur(2px);
-  -webkit-backdrop-filter: blur(2px);
-  border: 1px solid rgba(255, 255, 255, 0.45);
-  box-shadow: none;
-}
-
-/* Etapas 2, 3 e 4 com leitura limpa para formulários e resumo */
-.etapa-formulario {
-  background: var(--bg-form-card);
+  background: var(--bg-card);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
-  box-shadow: 0 18px 40px rgba(15, 41, 74, 0.24);
+  border-radius: 26px;
+  padding: 22px 20px;
+  box-shadow: 0 20px 45px rgba(11, 25, 44, 0.34);
 }
 
 .hidden {
@@ -114,11 +114,10 @@ body {
 .step-indicator {
   font-size: 0.74rem;
   text-transform: uppercase;
-  letter-spacing: 1px;
-  color: var(--azul-escuro);
+  letter-spacing: 0.9px;
+  color: #92400e;
   font-weight: 800;
-  margin-bottom: 8px;
-  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.85);
+  margin-bottom: 12px;
 }
 
 .aviso-topo {
@@ -137,7 +136,7 @@ body {
 }
 
 .input-group {
-  margin-bottom: 12px;
+  margin-bottom: 14px;
 }
 
 .input-group label {
@@ -145,8 +144,7 @@ body {
   font-size: 0.84rem;
   color: var(--text-main);
   font-weight: 700;
-  margin-bottom: 5px;
-  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.85);
+  margin-bottom: 6px;
 }
 
 .grid-2-col {
@@ -168,14 +166,14 @@ body {
 }
 
 .valor-display {
-  font-size: 2rem;
+  font-size: 2.05rem;
   font-weight: 900;
   background: var(--dourado-gradiente);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 4px rgba(15, 23, 42, 0.22));
-  margin-bottom: 6px;
+  filter: drop-shadow(0 2px 4px rgba(15, 23, 42, 0.25));
+  margin-bottom: 8px;
 }
 
 input[type="range"] {
@@ -190,10 +188,9 @@ input[type="range"] {
   display: flex;
   justify-content: space-between;
   font-size: 0.78rem;
-  color: var(--text-main);
+  color: var(--text-muted);
   font-weight: 700;
-  margin-top: 4px;
-  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.85);
+  margin-top: 5px;
 }
 
 .parcelas-grid {
@@ -203,10 +200,10 @@ input[type="range"] {
 }
 
 .parcela-btn {
-  background-color: rgba(255, 255, 255, 0.82);
-  border: 1px solid rgba(30, 64, 175, 0.28);
+  background-color: var(--bg-input);
+  border: 1px solid rgba(12, 35, 64, 0.22);
   color: var(--azul-escuro);
-  padding: 9px;
+  padding: 10px;
   border-radius: 999px;
   font-weight: 800;
   cursor: pointer;
@@ -219,37 +216,37 @@ input[type="range"] {
 }
 
 .parcela-btn.active {
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
-  color: #ffffff;
-  border-color: #1d4ed8;
-  box-shadow: 0 6px 14px rgba(29, 78, 216, 0.28);
+  background: linear-gradient(135deg, #0c2340, #1d4ed8);
+  color: #fde047;
+  border-color: #eab308;
+  box-shadow: 0 6px 14px rgba(12, 35, 64, 0.28);
 }
 
 .estimativa-box {
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.9);
   border-radius: 16px;
-  padding: 11px;
+  padding: 13px;
   text-align: center;
-  margin: 12px 0 14px 0;
-  border: 1px solid rgba(234, 179, 8, 0.75);
+  margin: 14px 0 16px 0;
+  border: 1px solid rgba(217, 119, 6, 0.45);
 }
 
 .estimativa-box span {
   display: block;
-  font-size: 0.8rem;
-  color: var(--text-main);
+  font-size: 0.82rem;
+  color: var(--text-muted);
   font-weight: 600;
 }
 
 .estimativa-box strong {
   display: block;
-  font-size: 1.38rem;
+  font-size: 1.42rem;
   font-weight: 900;
   background: var(--dourado-gradiente);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 2px 0;
+  margin: 3px 0;
 }
 
 .estimativa-box small {
@@ -263,7 +260,7 @@ input[type="date"],
 select {
   width: 100%;
   background-color: var(--bg-input);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(12, 35, 64, 0.22);
   color: var(--text-main);
   padding: 11px 13px;
   border-radius: 14px;
@@ -274,7 +271,7 @@ select {
 input:focus,
 select:focus {
   border-color: var(--azul-medio);
-  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.14);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.16);
 }
 
 .msg-erro {
@@ -287,21 +284,21 @@ select:focus {
 
 .btn-primary {
   width: 100%;
-  background: linear-gradient(135deg, #1e3a8a, #2563eb);
+  background: linear-gradient(135deg, #0c2340, #1d4ed8);
   color: #ffffff;
-  border: none;
-  padding: 13px 18px;
+  border: 1px solid rgba(250, 204, 21, 0.45);
+  padding: 14px 18px;
   border-radius: 999px;
   font-size: 0.96rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(29, 78, 216, 0.28);
+  box-shadow: 0 8px 18px rgba(12, 35, 64, 0.28);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(29, 78, 216, 0.36);
+  box-shadow: 0 10px 22px rgba(12, 35, 64, 0.36);
 }
 
 .btn-row {
@@ -312,9 +309,9 @@ select:focus {
 }
 
 .btn-secondary {
-  background-color: #ffffff;
+  background-color: var(--bg-input);
   color: var(--azul-escuro);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(12, 35, 64, 0.22);
   padding: 13px 16px;
   border-radius: 999px;
   font-weight: 700;
@@ -339,7 +336,7 @@ select:focus {
 }
 
 .resumo-card {
-  background-color: #ffffff;
+  background-color: var(--bg-input);
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 14px;
@@ -350,7 +347,7 @@ select:focus {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(12, 35, 64, 0.12);
   font-size: 0.88rem;
 }
 
@@ -403,20 +400,21 @@ select:focus {
   text-decoration: underline;
 }
 
-/* Rodapé transparente para não criar faixa na parte inferior */
 .app-footer {
   text-align: center;
-  margin-top: 10px;
+  margin-top: 14px;
   font-size: 0.78rem;
   color: var(--azul-escuro);
   font-weight: 700;
-  background: transparent;
-  border: none;
-  box-shadow: none;
-  padding: 4px 8px;
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
+  padding: 8px 14px;
+  border-radius: 999px;
   display: block;
   width: 100%;
-  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 24px rgba(11, 25, 44, 0.24);
 }
 
 @media (max-width: 420px) {
@@ -425,7 +423,7 @@ select:focus {
   }
 
   .card-app {
-    padding: 16px 14px;
+    padding: 18px 14px;
     border-radius: 20px;
   }
 }
