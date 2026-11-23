@@ -13,8 +13,8 @@
   <meta property="og:url" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/">
   <meta property="og:title" content="Fera Simulador de Crédito Rápido">
   <meta property="og:description" content="Simule valores, prazos e descubra em 30 segundos as linhas de crédito disponíveis para o seu perfil.">
-  <meta property="og:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=5">
-  <meta property="og:image:secure_url" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=5">
+  <meta property="og:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=6">
+  <meta property="og:image:secure_url" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=6">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,11 +23,11 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fera Simulador de Crédito Rápido">
   <meta name="twitter:description" content="Simule valores, prazos e descubra em 30 segundos as linhas de crédito disponíveis para o seu perfil.">
-  <meta name="twitter:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=5">
+  <meta name="twitter:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=6">
 
-  <link rel="stylesheet" href="style.css?v=5">
+  <link rel="stylesheet" href="style.css?v=6">
 </head>
-<body>
+<body class="modo-cenario">
 
   <div class="app-container">
     <!-- CABEÇALHO -->
@@ -39,8 +39,8 @@
       <p class="subtitle">Descubra em 30 segundos a melhor linha de crédito para o seu perfil.</p>
     </header>
 
-    <!-- ETAPA 1: VALORES E PRAZO -->
-    <main class="card-app" id="etapa-1">
+    <!-- ETAPA 1: VALORES E PRAZO (INTEGRADA AO CENÁRIO DO FUNDO) -->
+    <main class="card-app etapa-cenario" id="etapa-1">
       <div class="step-indicator">Passo 1 de 3 • Simulação</div>
 
       <div class="input-group">
@@ -77,7 +77,7 @@
     </main>
 
     <!-- ETAPA 2: PERFIL DE CRÉDITO -->
-    <section class="card-app hidden" id="etapa-2">
+    <section class="card-app etapa-formulario hidden" id="etapa-2">
       <div class="step-indicator">Passo 2 de 3 • Perfil de Crédito</div>
 
       <div class="input-group">
@@ -107,7 +107,7 @@
     </section>
 
     <!-- ETAPA 3: FICHA CADASTRAL COMPLETA -->
-    <section class="card-app hidden" id="etapa-3">
+    <section class="card-app etapa-formulario hidden" id="etapa-3">
       <div class="step-indicator">Passo 3 de 3 • Dados para Consulta</div>
       <p class="aviso-topo">Preencha seus dados para verificarmos as financeiras disponíveis no seu CPF.</p>
 
@@ -200,7 +200,7 @@
     </section>
 
     <!-- ETAPA 4: RESULTADO FINAL E ENVIO AO WHATSAPP -->
-    <section class="card-app hidden" id="etapa-4">
+    <section class="card-app etapa-formulario hidden" id="etapa-4">
       <div class="badge-aprovado">✓ FICHA PRONTA PARA ANÁLISE</div>
       <h2>Modalidade Recomendada</h2>
 
@@ -237,6 +237,6 @@
     </footer>
   </div>
 
-  <script src="script.js?v=5"></script>
+  <script src="script.js?v=6"></script>
 </body>
 </html>
