@@ -54,7 +54,7 @@ body.tema-aguia::before {
 
 @media (min-width: 769px) {
   .app-container {
-    transform: translateX(-11%);
+    transform: translateX(-21%);
   }
 }
 
