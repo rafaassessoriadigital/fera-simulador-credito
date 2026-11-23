@@ -4,7 +4,7 @@
   --bg-input: rgba(255, 255, 255, 0.96);
   --azul-escuro: #0c2340;
   --azul-medio: #1d4ed8;
-  --azul-claro: #dbeafe;
+  --azul-claro: #dbeafe;https://github.com/rafaassessoriadigital/fera-simulador-credito/blob/main/style.css
   --dourado-gradiente: linear-gradient(135deg, #facc15 0%, #eab308 55%, #b45309 100%);
   --whatsapp: #22c55e;
   --whatsapp-hover: #16a34a;
@@ -12,7 +12,7 @@
   --text-muted: #334155;
   --border: rgba(217, 119, 6, 0.35);
   --danger: #dc2626;
-}
+}  
 
 * {
   margin: 0;
