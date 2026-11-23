@@ -10,6 +10,7 @@ let mesesSelecionados = 24;
 let ultimoEnvioHash = "";
 let ultimoConsultorAtribuido = null;
 let enviandoFicha = false;
+let interagiuNaSimulacao = false;
 
 const valorRange = document.getElementById("valor-range");
 const valorDisplay = document.getElementById("valor-display");
@@ -24,24 +25,35 @@ function calcularParcela() {
   const taxa = 0.022;
   const fator = Math.pow(1 + taxa, mesesSelecionados);
   const parcela = (valorSelecionado * (taxa * fator)) / (fator - 1);
+
   if (parcelaEstimadaEl) {
     parcelaEstimadaEl.textContent = `${formatarMoeda(parcela)} / mês`;
+    if (interagiuNaSimulacao) {
+      parcelaEstimadaEl.classList.add("visivel");
+    }
   }
+
+  if (valorDisplay) {
+    valorDisplay.textContent = formatarMoeda(valorSelecionado);
+    if (interagiuNaSimulacao) {
+      valorDisplay.classList.add("visivel");
+    }
+  }
+
   return parcela;
 }
 
 if (valorRange) {
   valorRange.addEventListener("input", (e) => {
+    interagiuNaSimulacao = true;
     valorSelecionado = Number(e.target.value);
-    if (valorDisplay) {
-      valorDisplay.textContent = formatarMoeda(valorSelecionado);
-    }
     calcularParcela();
   });
 }
 
 botoesParcela.forEach((btn) => {
   btn.addEventListener("click", () => {
+    interagiuNaSimulacao = true;
     botoesParcela.forEach((b) => b.classList.remove("active"));
     btn.classList.add("active");
     mesesSelecionados = Number(btn.dataset.meses);
