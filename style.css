@@ -1,7 +1,7 @@
 :root {
-  --bg-page: #eef4fb;
-  --bg-card: rgba(255, 255, 255, 0.88);
-  --bg-input: rgba(255, 255, 255, 0.82);
+  --bg-page: #0b192c;
+  --bg-card: rgba(255, 255, 255, 0.72);
+  --bg-input: rgba(255, 255, 255, 0.88);
   --azul-escuro: #0f294a;
   --azul-medio: #1d4ed8;
   --azul-claro: #e0ecfa;
@@ -9,8 +9,8 @@
   --whatsapp: #22c55e;
   --whatsapp-hover: #16a34a;
   --text-main: #0f172a;
-  --text-muted: #475569;
-  --border: rgba(30, 64, 175, 0.18);
+  --text-muted: #334155;
+  --border: rgba(255, 255, 255, 0.65);
   --danger: #dc2626;
 }
 
@@ -23,11 +23,9 @@
 
 body {
   background-color: var(--bg-page);
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.35), rgba(238, 244, 251, 0.55)),
-    url("fundo-fera.png?v=3");
+  background-image: url("fundo-fera.png?v=3");
   background-size: cover;
-  background-position: center top;
+  background-position: center;
   background-repeat: no-repeat;
   color: var(--text-main);
   min-height: 100vh;
@@ -39,19 +37,21 @@ body {
 
 .app-container {
   position: relative;
+  z-index: 1;
   width: 100%;
   max-width: 500px;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 18px;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
+  margin-bottom: 16px;
+  background: rgba(255, 255, 255, 0.74);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
   border: 1px solid var(--border);
   border-radius: 22px;
   padding: 14px 18px;
+  box-shadow: 0 12px 28px rgba(11, 25, 44, 0.22);
 }
 
 .brand {
@@ -86,12 +86,12 @@ body {
 .card-app {
   position: relative;
   background: var(--bg-card);
-  backdrop-filter: blur(16px);
-  -webkit-backdrop-filter: blur(16px);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
   border-radius: 26px;
   padding: 24px 22px;
-  box-shadow: 0 20px 45px rgba(15, 41, 74, 0.16);
+  box-shadow: 0 20px 45px rgba(11, 25, 44, 0.28);
 }
 
 .hidden {
@@ -116,7 +116,7 @@ body {
 .section-subtitle {
   font-size: 0.95rem;
   color: var(--azul-escuro);
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(15, 41, 74, 0.14);
   padding-bottom: 6px;
   margin: 16px 0 12px 0;
   font-weight: 700;
@@ -129,8 +129,8 @@ body {
 .input-group label {
   display: block;
   font-size: 0.85rem;
-  color: var(--text-muted);
-  font-weight: 600;
+  color: var(--text-main);
+  font-weight: 700;
   margin-bottom: 6px;
 }
 
@@ -159,7 +159,7 @@ body {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 2px 5px rgba(202, 138, 4, 0.25));
+  filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.22));
   margin-bottom: 10px;
 }
 
@@ -175,8 +175,8 @@ input[type="range"] {
   display: flex;
   justify-content: space-between;
   font-size: 0.8rem;
-  color: var(--text-muted);
-  font-weight: 600;
+  color: var(--text-main);
+  font-weight: 700;
   margin-top: 6px;
 }
 
@@ -188,7 +188,7 @@ input[type="range"] {
 
 .parcela-btn {
   background-color: var(--bg-input);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(30, 64, 175, 0.22);
   color: var(--azul-escuro);
   padding: 11px;
   border-radius: 999px;
@@ -206,16 +206,16 @@ input[type="range"] {
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
   color: #ffffff;
   border-color: #1d4ed8;
-  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.28);
+  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.32);
 }
 
 .estimativa-box {
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.82);
   border-radius: 18px;
   padding: 15px;
   text-align: center;
   margin: 16px 0 18px 0;
-  border: 1px solid rgba(234, 179, 8, 0.5);
+  border: 1px solid rgba(234, 179, 8, 0.65);
 }
 
 .estimativa-box span {
@@ -233,7 +233,7 @@ input[type="range"] {
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 4px rgba(202, 138, 4, 0.25));
+  filter: drop-shadow(0 1px 4px rgba(15, 23, 42, 0.18));
   margin: 4px 0;
 }
 
@@ -248,7 +248,7 @@ input[type="date"],
 select {
   width: 100%;
   background-color: var(--bg-input);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(30, 64, 175, 0.24);
   color: var(--text-main);
   padding: 12px 14px;
   border-radius: 14px;
@@ -259,7 +259,7 @@ select {
 input:focus,
 select:focus {
   border-color: var(--azul-medio);
-  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.14);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.18);
 }
 
 .msg-erro {
@@ -280,13 +280,13 @@ select:focus {
   font-size: 1rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.28);
+  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.34);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.36);
+  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.42);
 }
 
 .btn-row {
@@ -297,9 +297,9 @@ select:focus {
 }
 
 .btn-secondary {
-  background-color: rgba(255, 255, 255, 0.82);
+  background-color: rgba(255, 255, 255, 0.88);
   color: var(--azul-escuro);
-  border: 1px solid var(--border);
+  border: 1px solid rgba(30, 64, 175, 0.22);
   padding: 14px 18px;
   border-radius: 999px;
   font-weight: 700;
@@ -308,7 +308,7 @@ select:focus {
 
 .badge-aprovado {
   display: inline-block;
-  background-color: rgba(34, 197, 94, 0.15);
+  background-color: rgba(34, 197, 94, 0.18);
   color: #15803d;
   font-size: 0.78rem;
   font-weight: 800;
@@ -324,8 +324,8 @@ select:focus {
 }
 
 .resumo-card {
-  background-color: rgba(255, 255, 255, 0.78);
-  border: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.84);
+  border: 1px solid rgba(30, 64, 175, 0.18);
   border-radius: 18px;
   padding: 16px;
   margin-bottom: 16px;
@@ -335,7 +335,7 @@ select:focus {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid var(--border);
+  border-bottom: 1px solid rgba(30, 64, 175, 0.14);
   font-size: 0.9rem;
 }
 
@@ -353,7 +353,7 @@ select:focus {
 
 .aviso-consultor {
   font-size: 0.88rem;
-  color: var(--text-muted);
+  color: var(--text-main);
   margin-bottom: 18px;
   line-height: 1.5;
 }
@@ -369,7 +369,7 @@ select:focus {
   border-radius: 999px;
   font-weight: 800;
   font-size: 1rem;
-  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.28);
+  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.34);
 }
 
 .btn-whatsapp:hover {
@@ -381,7 +381,7 @@ select:focus {
   width: 100%;
   background: none;
   border: none;
-  color: var(--text-muted);
+  color: var(--text-main);
   margin-top: 14px;
   font-size: 0.85rem;
   cursor: pointer;
@@ -393,12 +393,16 @@ select:focus {
   margin-top: 16px;
   font-size: 0.8rem;
   color: var(--azul-escuro);
-  font-weight: 600;
-  background: rgba(255, 255, 255, 0.72);
+  font-weight: 700;
+  background: rgba(255, 255, 255, 0.78);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid var(--border);
   padding: 8px 14px;
   border-radius: 999px;
   display: inline-block;
   width: 100%;
+  box-shadow: 0 10px 24px rgba(11, 25, 44, 0.2);
 }
 
 @media (max-width: 420px) {
