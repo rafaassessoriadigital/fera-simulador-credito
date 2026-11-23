@@ -54,7 +54,7 @@ body.tema-aguia::before {
 
 @media (min-width: 769px) {
   .app-container {
-    margin-right: 180px !important;
+    margin-right: 90px !important;
 }
 
 .app-header {
