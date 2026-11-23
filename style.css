@@ -1,7 +1,7 @@
 :root {
   --bg-page: #0b192c;
-  --bg-card: rgba(244, 248, 255, 0.86);
-  --bg-input: rgba(255, 255, 255, 0.95);
+  --bg-card: rgba(244, 248, 255, 0.92);
+  --bg-input: rgba(255, 255, 255, 0.96);
   --azul-escuro: #0c2340;
   --azul-medio: #1d4ed8;
   --azul-claro: #dbeafe;
@@ -24,7 +24,7 @@
 body.tema-aguia {
   position: relative;
   background-color: var(--bg-page);
-  background-image: url("fundo-fera.png?v=7");
+  background-image: url("fundo-fera.png?v=8");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -33,15 +33,14 @@ body.tema-aguia {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 22px 14px;
+  padding: 20px 14px;
 }
 
-/* Camada sutil para destacar o formulário sem apagar o cenário das águias */
 body.tema-aguia::before {
   content: "";
   position: fixed;
   inset: 0;
-  background: radial-gradient(circle at center, rgba(11, 25, 44, 0.18) 0%, rgba(11, 25, 44, 0.46) 100%);
+  background: radial-gradient(circle at center, rgba(11, 25, 44, 0.06) 0%, rgba(11, 25, 44, 0.28) 100%);
   pointer-events: none;
   z-index: 0;
 }
@@ -50,19 +49,19 @@ body.tema-aguia::before {
   position: relative;
   z-index: 1;
   width: 100%;
-  max-width: 470px;
+  max-width: 460px;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 14px;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: 10px;
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 13px 16px;
-  box-shadow: 0 12px 28px rgba(11, 25, 44, 0.28);
+  border-radius: 20px;
+  padding: 10px 14px;
+  box-shadow: 0 10px 24px rgba(11, 25, 44, 0.22);
 }
 
 .brand {
@@ -70,29 +69,29 @@ body.tema-aguia::before {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 4px;
+  margin-bottom: 2px;
 }
 
 .brand-badge {
   background: linear-gradient(135deg, #0c2340, #1d4ed8);
   color: #fde047;
   font-weight: 900;
-  padding: 4px 12px;
+  padding: 3px 10px;
   border-radius: 999px;
-  font-size: 0.84rem;
+  font-size: 0.8rem;
   letter-spacing: 0.8px;
   border: 1px solid rgba(250, 204, 21, 0.5);
 }
 
 .app-header h1 {
-  font-size: 1.24rem;
+  font-size: 1.12rem;
   font-weight: 800;
   color: var(--azul-escuro);
 }
 
 .subtitle {
   color: var(--text-muted);
-  font-size: 0.84rem;
+  font-size: 0.78rem;
   font-weight: 500;
 }
 
@@ -102,11 +101,127 @@ body.tema-aguia::before {
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 22px 20px;
-  box-shadow: 0 20px 45px rgba(11, 25, 44, 0.34);
+  border-radius: 24px;
+  padding: 20px 18px;
+  box-shadow: 0 18px 40px rgba(11, 25, 44, 0.3);
 }
 
+/* Etapa 1 sobreposta de forma limpa à calculadora desenhada na arte */
+.card-app.etapa-cenario {
+  background: transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+  border: none !important;
+  box-shadow: none !important;
+  padding: 8px 14px;
+}
+
+.etapa-cenario .step-indicator,
+.etapa-cenario .input-group > label,
+.etapa-cenario .range-limits,
+.etapa-cenario .estimativa-box span,
+.etapa-cenario .estimativa-box small {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.etapa-cenario .input-group {
+  margin-bottom: 10px;
+}
+
+.etapa-cenario .valor-display {
+  visibility: hidden;
+  font-size: 1.85rem;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.92);
+  border-radius: 14px;
+  padding: 4px 12px;
+  display: inline-block;
+  color: #b45309;
+  box-shadow: 0 6px 16px rgba(11, 25, 44, 0.16);
+  margin-bottom: 6px;
+}
+
+.etapa-cenario .valor-display.visivel {
+  visibility: visible;
+}
+
+.etapa-cenario input[type="range"] {
+  width: 100%;
+  accent-color: #eab308;
+  cursor: pointer;
+  height: 10px;
+  border-radius: 999px;
+}
+
+.etapa-cenario .parcelas-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-top: 4px;
+}
+
+.etapa-cenario .parcela-btn {
+  background-color: rgba(255, 255, 255, 0.88);
+  border: 1px solid rgba(12, 35, 64, 0.25);
+  color: var(--azul-escuro);
+  padding: 9px 8px;
+  border-radius: 999px;
+  font-weight: 800;
+  font-size: 0.88rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: 0 4px 10px rgba(11, 25, 44, 0.14);
+}
+
+.etapa-cenario .parcela-btn:hover {
+  background-color: var(--azul-claro);
+  border-color: var(--azul-medio);
+}
+
+.etapa-cenario .parcela-btn.active {
+  background: linear-gradient(135deg, #0c2340, #1d4ed8);
+  color: #fde047;
+  border-color: #eab308;
+}
+
+.etapa-cenario .estimativa-box {
+  background: transparent;
+  border: none;
+  padding: 4px 8px;
+  margin: 8px 0 10px 0;
+  text-align: center;
+}
+
+.etapa-cenario .estimativa-box strong {
+  visibility: hidden;
+  display: inline-block;
+  font-size: 1.25rem;
+  font-weight: 900;
+  background: rgba(255, 255, 255, 0.92);
+  color: #b45309;
+  padding: 5px 14px;
+  border-radius: 999px;
+  box-shadow: 0 6px 16px rgba(11, 25, 44, 0.16);
+}
+
+.etapa-cenario .estimativa-box strong.visivel {
+  visibility: visible;
+}
+
+.etapa-cenario .btn-primary {
+  background: linear-gradient(135deg, #0c2340, #1d4ed8);
+  color: #ffffff;
+  border: 1px solid rgba(250, 204, 21, 0.55);
+  padding: 13px 18px;
+  border-radius: 999px;
+  font-size: 0.95rem;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 10px 22px rgba(11, 25, 44, 0.28);
+}
+
+/* Etapas 2, 3 e 4 */
 .hidden {
   display: none !important;
 }
@@ -402,19 +517,19 @@ select:focus {
 
 .app-footer {
   text-align: center;
-  margin-top: 14px;
-  font-size: 0.78rem;
+  margin-top: 10px;
+  font-size: 0.76rem;
   color: var(--azul-escuro);
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.88);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.84);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
   border: 1px solid var(--border);
-  padding: 8px 14px;
+  padding: 7px 14px;
   border-radius: 999px;
   display: block;
   width: 100%;
-  box-shadow: 0 10px 24px rgba(11, 25, 44, 0.24);
+  box-shadow: 0 10px 24px rgba(11, 25, 44, 0.22);
 }
 
 @media (max-width: 420px) {
@@ -423,7 +538,7 @@ select:focus {
   }
 
   .card-app {
-    padding: 18px 14px;
+    padding: 16px 14px;
     border-radius: 20px;
   }
 }
