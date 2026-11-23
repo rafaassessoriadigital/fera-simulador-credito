@@ -45,8 +45,9 @@ body.tema-aguia {
 
 /* Quando a Etapa 1 está visível, evita duplicar cabeçalho, rodapé e textos fixos já presentes na imagem de fundo */
 body.tema-aguia:has(#etapa-1:not(.hidden)) .app-header,
-body.tema-aguia:has(#etapa-1:not(.hidden)) .app-footer {
-  display: none;
+body.tema-aguia:has(#etapa-1:not(.hidden)) .app-footer,
+#etapa-1:not(.hidden) {
+  opacity: 0;
 }
 
 .card-app.modo-sobreposto {
