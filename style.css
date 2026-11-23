@@ -24,7 +24,7 @@
 body.tema-aguia {
   position: relative;
   background-color: var(--bg-page);
-  background-image: url("fundo-fera.png?v=9");
+  background-image: url("fundo-fera.png?v=10");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -50,6 +50,12 @@ body.tema-aguia::before {
   z-index: 1;
   width: 100%;
   max-width: 450px;
+}
+
+@media (min-width: 769px) {
+  .app-container {
+    transform: translateX(-4%);
+  }
 }
 
 .app-header {
@@ -291,138 +297,4 @@ select:focus {
   font-size: 0.96rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 8px 18px rgba(12, 35, 64, 0.28);
-  transition: transform 0.18s ease, box-shadow 0.18s ease;
-}
-
-.btn-primary:hover {
-  transform: translateY(-1px);
-  box-shadow: 0 10px 22px rgba(12, 35, 64, 0.36);
-}
-
-.btn-row {
-  display: grid;
-  grid-template-columns: 1fr 2fr;
-  gap: 10px;
-  margin-top: 10px;
-}
-
-.btn-secondary {
-  background-color: var(--bg-input);
-  color: var(--azul-escuro);
-  border: 1px solid rgba(12, 35, 64, 0.22);
-  padding: 13px 16px;
-  border-radius: 999px;
-  font-weight: 700;
-  cursor: pointer;
-}
-
-.badge-aprovado {
-  display: inline-block;
-  background-color: rgba(34, 197, 94, 0.16);
-  color: #15803d;
-  font-size: 0.78rem;
-  font-weight: 800;
-  padding: 6px 14px;
-  border-radius: 999px;
-  margin-bottom: 10px;
-}
-
-.card-app h2 {
-  font-size: 1.25rem;
-  color: var(--azul-escuro);
-  margin-bottom: 14px;
-}
-
-.resumo-card {
-  background-color: var(--bg-input);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 14px;
-  margin-bottom: 14px;
-}
-
-.resumo-linha {
-  display: flex;
-  justify-content: space-between;
-  padding: 8px 0;
-  border-bottom: 1px solid rgba(12, 35, 64, 0.12);
-  font-size: 0.88rem;
-}
-
-.resumo-linha:last-child {
-  border-bottom: none;
-}
-
-.destaque-verde {
-  font-weight: 900;
-  background: var(--dourado-gradiente);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-}
-
-.aviso-consultor {
-  font-size: 0.86rem;
-  color: var(--text-muted);
-  margin-bottom: 16px;
-  line-height: 1.45;
-}
-
-.btn-whatsapp {
-  display: block;
-  width: 100%;
-  background-color: var(--whatsapp);
-  color: #ffffff;
-  text-align: center;
-  text-decoration: none;
-  padding: 15px 18px;
-  border-radius: 999px;
-  font-weight: 800;
-  font-size: 0.98rem;
-  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.28);
-}
-
-.btn-whatsapp:hover {
-  background-color: var(--whatsapp-hover);
-}
-
-.btn-link {
-  display: block;
-  width: 100%;
-  background: none;
-  border: none;
-  color: var(--text-muted);
-  margin-top: 12px;
-  font-size: 0.84rem;
-  cursor: pointer;
-  text-decoration: underline;
-}
-
-.app-footer {
-  text-align: center;
-  margin-top: 12px;
-  font-size: 0.78rem;
-  color: var(--azul-escuro);
-  font-weight: 700;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  border: 1px solid var(--border);
-  padding: 8px 14px;
-  border-radius: 999px;
-  display: block;
-  width: 100%;
-  box-shadow: 0 10px 24px rgba(12, 35, 64, 0.2);
-}
-
-@media (max-width: 420px) {
-  .grid-2-col {
-    grid-template-columns: 1fr;
-  }
-
-  .card-app {
-    padding: 18px 14px;
-    border-radius: 20px;
-  }
-}
+  box-shadow: 0 8px 18px rgba(12, 35, 64, 0.28
