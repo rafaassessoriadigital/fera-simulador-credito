@@ -106,6 +106,14 @@ if (inputCep) {
   });
 }
 
+function formatarDataBR(dataIso) {
+  if (!dataIso || !dataIso.includes("-")) return "";
+  const partes = dataIso.split("-");
+  if (partes.length !== 3) return dataIso;
+  const [ano, mes, dia] = partes;
+  return `${dia}/${mes}/${ano}`;
+}
+
 async function resolverConsultorNoServidor(payload) {
   if (!RODIZIO_ENDPOINT_URL || RODIZIO_ENDPOINT_URL.startsWith("COLE_AQUI")) {
     return Math.random() < 0.5 ? CONSULTORES.Rafa : CONSULTORES.Nanda;
@@ -176,15 +184,13 @@ async function gerarResultado() {
   const cidade = document.getElementById("cidade-cliente").value.trim();
 
   const msgErro = document.getElementById("msg-erro");
+  const dataNascFormatada = formatarDataBR(nascimento);
 
-  if (!nome || !cpfNum || !nascimento || !celular || !cep || !uf || !logradouro || !numero || !bairro || !cidade) {
+  if (!nome || !cpfNum || !dataNascFormatada || !celular || !cep || !uf || !logradouro || !numero || !bairro || !cidade) {
     if (msgErro) msgErro.classList.remove("hidden");
     return;
   }
   if (msgErro) msgErro.classList.add("hidden");
-
-  const [ano, mes, dia] = nascimento.split("-");
-  const dataNascFormatada = `${dia}/${mes}/${ano}`;
 
   const perfil = document.getElementById("perfil-cliente").value;
   const situacaoCpf = document.getElementById("situacao-cpf").value;
