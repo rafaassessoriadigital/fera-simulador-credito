@@ -24,15 +24,21 @@ function calcularParcela() {
   const taxa = 0.022;
   const fator = Math.pow(1 + taxa, mesesSelecionados);
   const parcela = (valorSelecionado * (taxa * fator)) / (fator - 1);
-  parcelaEstimadaEl.textContent = `${formatarMoeda(parcela)} / mês`;
+  if (parcelaEstimadaEl) {
+    parcelaEstimadaEl.textContent = `${formatarMoeda(parcela)} / mês`;
+  }
   return parcela;
 }
 
-valorRange.addEventListener("input", (e) => {
-  valorSelecionado = Number(e.target.value);
-  valorDisplay.textContent = formatarMoeda(valorSelecionado);
-  calcularParcela();
-});
+if (valorRange) {
+  valorRange.addEventListener("input", (e) => {
+    valorSelecionado = Number(e.target.value);
+    if (valorDisplay) {
+      valorDisplay.textContent = formatarMoeda(valorSelecionado);
+    }
+    calcularParcela();
+  });
+}
 
 botoesParcela.forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -45,49 +51,60 @@ botoesParcela.forEach((btn) => {
 
 function irParaEtapa(numero) {
   for (let i = 1; i <= 4; i++) {
-    document.getElementById(`etapa-${i}`).classList.add("hidden");
+    const etapa = document.getElementById(`etapa-${i}`);
+    if (etapa) etapa.classList.add("hidden");
   }
-  document.getElementById(`etapa-${numero}`).classList.remove("hidden");
+  const alvo = document.getElementById(`etapa-${numero}`);
+  if (alvo) alvo.classList.remove("hidden");
   window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 // Máscaras de CPF, Celular e CEP
-document.getElementById("cpf-cliente").addEventListener("input", (e) => {
-  let v = e.target.value.replace(/\D/g, "");
-  v = v.replace(/(\d{3})(\d)/, "$1.$2");
-  v = v.replace(/(\d{3})(\d)/, "$1.$2");
-  v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
-  e.target.value = v;
-});
+const inputCpf = document.getElementById("cpf-cliente");
+if (inputCpf) {
+  inputCpf.addEventListener("input", (e) => {
+    let v = e.target.value.replace(/\D/g, "");
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d)/, "$1.$2");
+    v = v.replace(/(\d{3})(\d{1,2})$/, "$1-$2");
+    e.target.value = v;
+  });
+}
 
-document.getElementById("celular-cliente").addEventListener("input", (e) => {
-  let v = e.target.value.replace(/\D/g, "");
-  v = v.replace(/^(\d{2})(\d)/, "($1) $2");
-  v = v.replace(/(\d)(\d{4})$/, "$1-$2");
-  e.target.value = v;
-});
+const inputCelular = document.getElementById("celular-cliente");
+if (inputCelular) {
+  inputCelular.addEventListener("input", (e) => {
+    let v = e.target.value.replace(/\D/g, "");
+    v = v.replace(/^(\d{2})(\d)/, "($1) $2");
+    v = v.replace(/(\d)(\d{4})$/, "$1-$2");
+    e.target.value = v;
+  });
+}
 
-document.getElementById("cep-cliente").addEventListener("input", (e) => {
-  let v = e.target.value.replace(/\D/g, "");
-  v = v.replace(/^(\d{5})(\d)/, "$1-$2");
-  e.target.value = v;
+const inputCep = document.getElementById("cep-cliente");
+if (inputCep) {
+  inputCep.addEventListener("input", (e) => {
+    let v = e.target.value.replace(/\D/g, "");
+    v = v.replace(/^(\d{5})(\d)/, "$1-$2");
+    e.target.value = v;
 
-  const cepLimpo = v.replace(/\D/g, "");
-  if (cepLimpo.length === 8) {
-    fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`)
-      .then((res) => res.json())
-      .then((dados) => {
-        if (!dados.erro) {
-          document.getElementById("logradouro-cliente").value = dados.logradouro || "";
-          document.getElementById("bairro-cliente").value = dados.bairro || "";
-          document.getElementById("cidade-cliente").value = dados.localidade || "";
-          document.getElementById("uf-cliente").value = dados.uf || "PR";
-          document.getElementById("numero-cliente").focus();
-        }
-      })
-      .catch((err) => console.warn("ViaCEP indisponível no momento:", err));
-  }
-});
+    const cepLimpo = v.replace(/\D/g, "");
+    if (cepLimpo.length === 8) {
+      fetch(`https://viacep.com.br/ws/${cepLimpo}/json/`)
+        .then((res) => res.json())
+        .then((dados) => {
+          if (!dados.erro) {
+            document.getElementById("logradouro-cliente").value = dados.logradouro || "";
+            document.getElementById("bairro-cliente").value = dados.bairro || "";
+            document.getElementById("cidade-cliente").value = dados.localidade || "";
+            document.getElementById("uf-cliente").value = dados.uf || "PR";
+            document.getElementById("numero-cliente").focus();
+          }
+        })
+        .catch((err) => console.warn("ViaCEP indisponível no momento:", err));
+    }
+  });
+}
 
 async function resolverConsultorNoServidor(payload) {
   if (!RODIZIO_ENDPOINT_URL || RODIZIO_ENDPOINT_URL.startsWith("COLE_AQUI")) {
@@ -135,8 +152,10 @@ function atualizarLinkWhatsApp(consultorEscolhido, dadosFicha) {
     `*Bairro:* ${dadosFicha.bairro} - ${dadosFicha.cidade}/${dadosFicha.uf}%0A%0A` +
     `Aguardo o retorno da consulta!`;
 
-  document.getElementById("btn-whatsapp").href =
-    `https://wa.me/${consultorEscolhido.whatsapp}?text=${mensagemWhats}`;
+  const btnWhats = document.getElementById("btn-whatsapp");
+  if (btnWhats) {
+    btnWhats.href = `https://wa.me/${consultorEscolhido.whatsapp}?text=${mensagemWhats}`;
+  }
 }
 
 async function gerarResultado() {
@@ -159,10 +178,10 @@ async function gerarResultado() {
   const msgErro = document.getElementById("msg-erro");
 
   if (!nome || !cpfNum || !nascimento || !celular || !cep || !uf || !logradouro || !numero || !bairro || !cidade) {
-    msgErro.classList.remove("hidden");
+    if (msgErro) msgErro.classList.remove("hidden");
     return;
   }
-  msgErro.classList.add("hidden");
+  if (msgErro) msgErro.classList.add("hidden");
 
   const [ano, mes, dia] = nascimento.split("-");
   const dataNascFormatada = `${dia}/${mes}/${ano}`;
@@ -197,7 +216,6 @@ async function gerarResultado() {
   const valorFormatado = formatarMoeda(valorSelecionado);
   const prazoFormatado = `${mesesSelecionados}x`;
   const textoCpfStatus = situacaoCpf === "limpo" ? "Sem restrições" : "Com restrições";
-  const enderecoCompleto = `${logradouro}, Nº ${numero} (${complemento}) - ${bairro} - ${cidade}/${uf}`;
 
   document.getElementById("res-modalidade").textContent = modalidade;
   document.getElementById("res-valor").textContent = valorFormatado;
@@ -225,7 +243,6 @@ async function gerarResultado() {
     uf
   };
 
-  // Identifica se é um reenvio exatamente igual ao último lead processado
   const hashAtual = `${cpfNum}|${valorFormatado}|${prazoFormatado}|${modalidade}|${textoCpfStatus}`;
   if (hashAtual === ultimoEnvioHash && ultimoConsultorAtribuido) {
     atualizarLinkWhatsApp(ultimoConsultorAtribuido, dadosFicha);
@@ -234,10 +251,12 @@ async function gerarResultado() {
   }
 
   const btnAvancar = document.querySelector("#etapa-3 .btn-primary");
-  const textoOriginalBtn = btnAvancar.textContent;
+  const textoOriginalBtn = btnAvancar ? btnAvancar.textContent : "Ver Liberação →";
   enviandoFicha = true;
-  btnAvancar.disabled = true;
-  btnAvancar.textContent = "Gerando ficha...";
+  if (btnAvancar) {
+    btnAvancar.disabled = true;
+    btnAvancar.textContent = "Gerando ficha...";
+  }
 
   try {
     const payloadLead = {
@@ -251,41 +270,21 @@ async function gerarResultado() {
       perfil: modalidade,
       situacao_cpf: textoCpfStatus,
       cep,
-      endereco_completo: enderecoCompleto
+      endereco_completo: `${logradouro}, Nº ${numero} (${complemento}) - ${bairro} - ${cidade}/${uf}`
     };
 
     const consultorEscolhido = await resolverConsultorNoServidor(payloadLead);
     ultimoEnvioHash = hashAtual;
     ultimoConsultorAtribuido = consultorEscolhido;
 
-    const formData = new URLSearchParams();
-    formData.append("form-name", "fichas-fera-credito");
-    formData.append("consultor", consultorEscolhido.nome);
-    formData.append("nome", nome);
-    formData.append("cpf", cpfNum);
-    formData.append("nascimento", dataNascFormatada);
-    formData.append("celular", celular);
-    formData.append("email", email);
-    formData.append("valor_desejado", valorFormatado);
-    formData.append("prazo", prazoFormatado);
-    formData.append("perfil", modalidade);
-    formData.append("situacao_cpf", textoCpfStatus);
-    formData.append("cep", cep);
-    formData.append("endereco_completo", enderecoCompleto);
-
-    fetch("/", {
-      method: "POST",
-      keepalive: true,
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: formData.toString()
-    }).catch((err) => console.warn("Falha ao enviar para Netlify Forms:", err));
-
     atualizarLinkWhatsApp(consultorEscolhido, dadosFicha);
     irParaEtapa(4);
   } finally {
     enviandoFicha = false;
-    btnAvancar.disabled = false;
-    btnAvancar.textContent = textoOriginalBtn;
+    if (btnAvancar) {
+      btnAvancar.disabled = false;
+      btnAvancar.textContent = textoOriginalBtn;
+    }
   }
 }
 
