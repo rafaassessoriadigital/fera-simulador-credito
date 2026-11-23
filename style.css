@@ -1,6 +1,6 @@
 :root {
-  --bg-page: #dbe9f8;
-  --bg-card: #e8f1fb;
+  --bg-page: #dce9f8;
+  --bg-form-card: rgba(248, 251, 255, 0.94);
   --bg-input: #ffffff;
   --azul-escuro: #0f294a;
   --azul-medio: #1d4ed8;
@@ -23,7 +23,7 @@
 
 body {
   background-color: var(--bg-page);
-  background-image: url("fundo-fera.png?v=5");
+  background-image: url("fundo-fera.png?v=6");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
@@ -39,17 +39,17 @@ body {
   position: relative;
   z-index: 2;
   width: 100%;
-  max-width: 460px;
+  max-width: 440px;
 }
 
+/* Cabeçalho sem caixa branca cobrindo o topo da arte */
 .app-header {
   text-align: center;
-  margin-bottom: 12px;
-  background: rgba(255, 255, 255, 0.94);
-  border: 1px solid var(--border);
-  border-radius: 20px;
-  padding: 12px 16px;
-  box-shadow: 0 10px 24px rgba(15, 41, 74, 0.16);
+  margin-bottom: 10px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 4px 8px;
 }
 
 .brand {
@@ -57,36 +57,53 @@ body {
   align-items: center;
   justify-content: center;
   gap: 8px;
-  margin-bottom: 3px;
+  margin-bottom: 2px;
 }
 
 .brand-badge {
   background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
   color: #ffffff;
   font-weight: 900;
-  padding: 3px 11px;
+  padding: 3px 10px;
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.82rem;
   letter-spacing: 1px;
 }
 
 .app-header h1 {
-  font-size: 1.25rem;
+  font-size: 1.15rem;
   font-weight: 800;
   color: var(--azul-escuro);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
 }
 
 .subtitle {
-  color: var(--text-muted);
-  font-size: 0.84rem;
+  color: var(--text-main);
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
 }
 
+/* Base do card */
 .card-app {
   position: relative;
-  background: var(--bg-card);
-  border: 2px solid rgba(147, 197, 253, 0.9);
   border-radius: 24px;
-  padding: 20px 20px;
+  padding: 18px 18px;
+}
+
+/* Etapa 1 integrada ao cenário sem caixa branca sólida por cima da arte */
+.etapa-cenario {
+  background: rgba(255, 255, 255, 0.22);
+  backdrop-filter: blur(2px);
+  -webkit-backdrop-filter: blur(2px);
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow: none;
+}
+
+/* Etapas 2, 3 e 4 com leitura limpa para formulários e resumo */
+.etapa-formulario {
+  background: var(--bg-form-card);
+  border: 1px solid var(--border);
   box-shadow: 0 18px 40px rgba(15, 41, 74, 0.24);
 }
 
@@ -95,12 +112,13 @@ body {
 }
 
 .step-indicator {
-  font-size: 0.75rem;
+  font-size: 0.74rem;
   text-transform: uppercase;
   letter-spacing: 1px;
-  color: var(--azul-medio);
+  color: var(--azul-escuro);
   font-weight: 800;
-  margin-bottom: 10px;
+  margin-bottom: 8px;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.85);
 }
 
 .aviso-topo {
@@ -119,7 +137,7 @@ body {
 }
 
 .input-group {
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .input-group label {
@@ -127,7 +145,8 @@ body {
   font-size: 0.84rem;
   color: var(--text-main);
   font-weight: 700;
-  margin-bottom: 6px;
+  margin-bottom: 5px;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.85);
 }
 
 .grid-2-col {
@@ -149,14 +168,14 @@ body {
 }
 
 .valor-display {
-  font-size: 2.05rem;
+  font-size: 2rem;
   font-weight: 900;
   background: var(--dourado-gradiente);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 3px rgba(15, 23, 42, 0.16));
-  margin-bottom: 8px;
+  filter: drop-shadow(0 1px 4px rgba(15, 23, 42, 0.22));
+  margin-bottom: 6px;
 }
 
 input[type="range"] {
@@ -171,9 +190,10 @@ input[type="range"] {
   display: flex;
   justify-content: space-between;
   font-size: 0.78rem;
-  color: var(--text-muted);
+  color: var(--text-main);
   font-weight: 700;
-  margin-top: 5px;
+  margin-top: 4px;
+  text-shadow: 0 1px 6px rgba(255, 255, 255, 0.85);
 }
 
 .parcelas-grid {
@@ -183,10 +203,10 @@ input[type="range"] {
 }
 
 .parcela-btn {
-  background-color: var(--bg-input);
-  border: 1px solid var(--border);
+  background-color: rgba(255, 255, 255, 0.82);
+  border: 1px solid rgba(30, 64, 175, 0.28);
   color: var(--azul-escuro);
-  padding: 10px;
+  padding: 9px;
   border-radius: 999px;
   font-weight: 800;
   cursor: pointer;
@@ -206,30 +226,30 @@ input[type="range"] {
 }
 
 .estimativa-box {
-  background: #f8fbff;
+  background: rgba(255, 255, 255, 0.72);
   border-radius: 16px;
-  padding: 13px;
+  padding: 11px;
   text-align: center;
-  margin: 14px 0 16px 0;
-  border: 1px solid rgba(234, 179, 8, 0.65);
+  margin: 12px 0 14px 0;
+  border: 1px solid rgba(234, 179, 8, 0.75);
 }
 
 .estimativa-box span {
   display: block;
-  font-size: 0.82rem;
-  color: var(--text-muted);
+  font-size: 0.8rem;
+  color: var(--text-main);
   font-weight: 600;
 }
 
 .estimativa-box strong {
   display: block;
-  font-size: 1.42rem;
+  font-size: 1.38rem;
   font-weight: 900;
   background: var(--dourado-gradiente);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  margin: 3px 0;
+  margin: 2px 0;
 }
 
 .estimativa-box small {
@@ -270,9 +290,9 @@ select:focus {
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
   color: #ffffff;
   border: none;
-  padding: 14px 18px;
+  padding: 13px 18px;
   border-radius: 999px;
-  font-size: 0.98rem;
+  font-size: 0.96rem;
   font-weight: 800;
   cursor: pointer;
   box-shadow: 0 8px 18px rgba(29, 78, 216, 0.28);
@@ -319,7 +339,7 @@ select:focus {
 }
 
 .resumo-card {
-  background-color: #f8fbff;
+  background-color: #ffffff;
   border: 1px solid var(--border);
   border-radius: 16px;
   padding: 14px;
@@ -383,19 +403,20 @@ select:focus {
   text-decoration: underline;
 }
 
+/* Rodapé transparente para não criar faixa na parte inferior */
 .app-footer {
   text-align: center;
-  margin-top: 12px;
+  margin-top: 10px;
   font-size: 0.78rem;
   color: var(--azul-escuro);
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.92);
-  border: 1px solid var(--border);
-  padding: 8px 14px;
-  border-radius: 999px;
+  background: transparent;
+  border: none;
+  box-shadow: none;
+  padding: 4px 8px;
   display: block;
   width: 100%;
-  box-shadow: 0 8px 20px rgba(15, 41, 74, 0.14);
+  text-shadow: 0 1px 8px rgba(255, 255, 255, 0.9);
 }
 
 @media (max-width: 420px) {
@@ -404,7 +425,7 @@ select:focus {
   }
 
   .card-app {
-    padding: 18px 14px;
+    padding: 16px 14px;
     border-radius: 20px;
   }
 }
