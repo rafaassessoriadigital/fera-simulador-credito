@@ -1,16 +1,16 @@
 :root {
-  --bg-page: #0b192c;
-  --bg-card: rgba(255, 255, 255, 0.72);
-  --bg-input: rgba(255, 255, 255, 0.88);
+  --bg-page: #dbe9f8;
+  --bg-card: #e8f1fb;
+  --bg-input: #ffffff;
   --azul-escuro: #0f294a;
   --azul-medio: #1d4ed8;
-  --azul-claro: #e0ecfa;
+  --azul-claro: #dceafe;
   --dourado-gradiente: linear-gradient(135deg, #facc15 0%, #eab308 55%, #ca8a04 100%);
   --whatsapp: #22c55e;
   --whatsapp-hover: #16a34a;
   --text-main: #0f172a;
-  --text-muted: #334155;
-  --border: rgba(255, 255, 255, 0.65);
+  --text-muted: #475569;
+  --border: rgba(30, 64, 175, 0.22);
   --danger: #dc2626;
 }
 
@@ -23,75 +23,71 @@
 
 body {
   background-color: var(--bg-page);
-  background-image: url("fundo-fera.png?v=3");
+  background-image: url("fundo-fera.png?v=5");
   background-size: cover;
-  background-position: center;
+  background-position: center center;
   background-repeat: no-repeat;
   color: var(--text-main);
   min-height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 24px 15px;
+  padding: 20px 14px;
 }
 
 .app-container {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   width: 100%;
-  max-width: 500px;
+  max-width: 460px;
 }
 
 .app-header {
   text-align: center;
-  margin-bottom: 16px;
-  background: rgba(255, 255, 255, 0.74);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.94);
   border: 1px solid var(--border);
-  border-radius: 22px;
-  padding: 14px 18px;
-  box-shadow: 0 12px 28px rgba(11, 25, 44, 0.22);
+  border-radius: 20px;
+  padding: 12px 16px;
+  box-shadow: 0 10px 24px rgba(15, 41, 74, 0.16);
 }
 
 .brand {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  margin-bottom: 4px;
+  gap: 8px;
+  margin-bottom: 3px;
 }
 
 .brand-badge {
   background: linear-gradient(135deg, #1e3a8a, #1d4ed8);
   color: #ffffff;
   font-weight: 900;
-  padding: 4px 12px;
+  padding: 3px 11px;
   border-radius: 999px;
-  font-size: 0.9rem;
+  font-size: 0.85rem;
   letter-spacing: 1px;
 }
 
 .app-header h1 {
-  font-size: 1.32rem;
+  font-size: 1.25rem;
   font-weight: 800;
   color: var(--azul-escuro);
 }
 
 .subtitle {
   color: var(--text-muted);
-  font-size: 0.88rem;
+  font-size: 0.84rem;
 }
 
 .card-app {
   position: relative;
   background: var(--bg-card);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid var(--border);
-  border-radius: 26px;
-  padding: 24px 22px;
-  box-shadow: 0 20px 45px rgba(11, 25, 44, 0.28);
+  border: 2px solid rgba(147, 197, 253, 0.9);
+  border-radius: 24px;
+  padding: 20px 20px;
+  box-shadow: 0 18px 40px rgba(15, 41, 74, 0.24);
 }
 
 .hidden {
@@ -99,36 +95,36 @@ body {
 }
 
 .step-indicator {
-  font-size: 0.76rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
   letter-spacing: 1px;
   color: var(--azul-medio);
   font-weight: 800;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .aviso-topo {
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-muted);
-  margin-bottom: 14px;
+  margin-bottom: 12px;
 }
 
 .section-subtitle {
-  font-size: 0.95rem;
+  font-size: 0.92rem;
   color: var(--azul-escuro);
-  border-bottom: 1px solid rgba(15, 41, 74, 0.14);
+  border-bottom: 1px solid var(--border);
   padding-bottom: 6px;
-  margin: 16px 0 12px 0;
+  margin: 14px 0 10px 0;
   font-weight: 700;
 }
 
 .input-group {
-  margin-bottom: 15px;
+  margin-bottom: 14px;
 }
 
 .input-group label {
   display: block;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-main);
   font-weight: 700;
   margin-bottom: 6px;
@@ -137,30 +133,30 @@ body {
 .grid-2-col {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .grid-cep {
   display: grid;
   grid-template-columns: 2fr 1fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .grid-num-comp {
   display: grid;
   grid-template-columns: 1fr 2fr;
-  gap: 12px;
+  gap: 10px;
 }
 
 .valor-display {
-  font-size: 2.2rem;
+  font-size: 2.05rem;
   font-weight: 900;
   background: var(--dourado-gradiente);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 2px 6px rgba(15, 23, 42, 0.22));
-  margin-bottom: 10px;
+  filter: drop-shadow(0 1px 3px rgba(15, 23, 42, 0.16));
+  margin-bottom: 8px;
 }
 
 input[type="range"] {
@@ -174,23 +170,23 @@ input[type="range"] {
 .range-limits {
   display: flex;
   justify-content: space-between;
-  font-size: 0.8rem;
-  color: var(--text-main);
+  font-size: 0.78rem;
+  color: var(--text-muted);
   font-weight: 700;
-  margin-top: 6px;
+  margin-top: 5px;
 }
 
 .parcelas-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 10px;
+  gap: 8px;
 }
 
 .parcela-btn {
   background-color: var(--bg-input);
-  border: 1px solid rgba(30, 64, 175, 0.22);
+  border: 1px solid var(--border);
   color: var(--azul-escuro);
-  padding: 11px;
+  padding: 10px;
   border-radius: 999px;
   font-weight: 800;
   cursor: pointer;
@@ -206,35 +202,34 @@ input[type="range"] {
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
   color: #ffffff;
   border-color: #1d4ed8;
-  box-shadow: 0 6px 16px rgba(29, 78, 216, 0.32);
+  box-shadow: 0 6px 14px rgba(29, 78, 216, 0.28);
 }
 
 .estimativa-box {
-  background: rgba(255, 255, 255, 0.82);
-  border-radius: 18px;
-  padding: 15px;
+  background: #f8fbff;
+  border-radius: 16px;
+  padding: 13px;
   text-align: center;
-  margin: 16px 0 18px 0;
+  margin: 14px 0 16px 0;
   border: 1px solid rgba(234, 179, 8, 0.65);
 }
 
 .estimativa-box span {
   display: block;
-  font-size: 0.84rem;
+  font-size: 0.82rem;
   color: var(--text-muted);
   font-weight: 600;
 }
 
 .estimativa-box strong {
   display: block;
-  font-size: 1.48rem;
+  font-size: 1.42rem;
   font-weight: 900;
   background: var(--dourado-gradiente);
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  filter: drop-shadow(0 1px 4px rgba(15, 23, 42, 0.18));
-  margin: 4px 0;
+  margin: 3px 0;
 }
 
 .estimativa-box small {
@@ -248,9 +243,9 @@ input[type="date"],
 select {
   width: 100%;
   background-color: var(--bg-input);
-  border: 1px solid rgba(30, 64, 175, 0.24);
+  border: 1px solid var(--border);
   color: var(--text-main);
-  padding: 12px 14px;
+  padding: 11px 13px;
   border-radius: 14px;
   font-size: 0.92rem;
   outline: none;
@@ -259,13 +254,13 @@ select {
 input:focus,
 select:focus {
   border-color: var(--azul-medio);
-  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.18);
+  box-shadow: 0 0 0 3px rgba(29, 78, 216, 0.14);
 }
 
 .msg-erro {
   color: var(--danger);
-  font-size: 0.85rem;
-  margin-bottom: 12px;
+  font-size: 0.84rem;
+  margin-bottom: 10px;
   text-align: center;
   font-weight: 700;
 }
@@ -275,18 +270,18 @@ select:focus {
   background: linear-gradient(135deg, #1e3a8a, #2563eb);
   color: #ffffff;
   border: none;
-  padding: 15px 20px;
+  padding: 14px 18px;
   border-radius: 999px;
-  font-size: 1rem;
+  font-size: 0.98rem;
   font-weight: 800;
   cursor: pointer;
-  box-shadow: 0 8px 20px rgba(29, 78, 216, 0.34);
+  box-shadow: 0 8px 18px rgba(29, 78, 216, 0.28);
   transition: transform 0.18s ease, box-shadow 0.18s ease;
 }
 
 .btn-primary:hover {
   transform: translateY(-1px);
-  box-shadow: 0 10px 24px rgba(29, 78, 216, 0.42);
+  box-shadow: 0 10px 22px rgba(29, 78, 216, 0.36);
 }
 
 .btn-row {
@@ -297,10 +292,10 @@ select:focus {
 }
 
 .btn-secondary {
-  background-color: rgba(255, 255, 255, 0.88);
+  background-color: #ffffff;
   color: var(--azul-escuro);
-  border: 1px solid rgba(30, 64, 175, 0.22);
-  padding: 14px 18px;
+  border: 1px solid var(--border);
+  padding: 13px 16px;
   border-radius: 999px;
   font-weight: 700;
   cursor: pointer;
@@ -308,35 +303,35 @@ select:focus {
 
 .badge-aprovado {
   display: inline-block;
-  background-color: rgba(34, 197, 94, 0.18);
+  background-color: rgba(34, 197, 94, 0.16);
   color: #15803d;
   font-size: 0.78rem;
   font-weight: 800;
   padding: 6px 14px;
   border-radius: 999px;
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
 .card-app h2 {
-  font-size: 1.3rem;
+  font-size: 1.25rem;
   color: var(--azul-escuro);
-  margin-bottom: 16px;
+  margin-bottom: 14px;
 }
 
 .resumo-card {
-  background-color: rgba(255, 255, 255, 0.84);
-  border: 1px solid rgba(30, 64, 175, 0.18);
-  border-radius: 18px;
-  padding: 16px;
-  margin-bottom: 16px;
+  background-color: #f8fbff;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 14px;
+  margin-bottom: 14px;
 }
 
 .resumo-linha {
   display: flex;
   justify-content: space-between;
   padding: 8px 0;
-  border-bottom: 1px solid rgba(30, 64, 175, 0.14);
-  font-size: 0.9rem;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.88rem;
 }
 
 .resumo-linha:last-child {
@@ -352,10 +347,10 @@ select:focus {
 }
 
 .aviso-consultor {
-  font-size: 0.88rem;
-  color: var(--text-main);
-  margin-bottom: 18px;
-  line-height: 1.5;
+  font-size: 0.86rem;
+  color: var(--text-muted);
+  margin-bottom: 16px;
+  line-height: 1.45;
 }
 
 .btn-whatsapp {
@@ -365,11 +360,11 @@ select:focus {
   color: #ffffff;
   text-align: center;
   text-decoration: none;
-  padding: 16px 20px;
+  padding: 15px 18px;
   border-radius: 999px;
   font-weight: 800;
-  font-size: 1rem;
-  box-shadow: 0 8px 20px rgba(34, 197, 94, 0.34);
+  font-size: 0.98rem;
+  box-shadow: 0 8px 18px rgba(34, 197, 94, 0.28);
 }
 
 .btn-whatsapp:hover {
@@ -381,28 +376,26 @@ select:focus {
   width: 100%;
   background: none;
   border: none;
-  color: var(--text-main);
-  margin-top: 14px;
-  font-size: 0.85rem;
+  color: var(--text-muted);
+  margin-top: 12px;
+  font-size: 0.84rem;
   cursor: pointer;
   text-decoration: underline;
 }
 
 .app-footer {
   text-align: center;
-  margin-top: 16px;
-  font-size: 0.8rem;
+  margin-top: 12px;
+  font-size: 0.78rem;
   color: var(--azul-escuro);
   font-weight: 700;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
+  background: rgba(255, 255, 255, 0.92);
   border: 1px solid var(--border);
   padding: 8px 14px;
   border-radius: 999px;
-  display: inline-block;
+  display: block;
   width: 100%;
-  box-shadow: 0 10px 24px rgba(11, 25, 44, 0.2);
+  box-shadow: 0 8px 20px rgba(15, 41, 74, 0.14);
 }
 
 @media (max-width: 420px) {
@@ -411,7 +404,7 @@ select:focus {
   }
 
   .card-app {
-    padding: 20px 16px;
-    border-radius: 22px;
+    padding: 18px 14px;
+    border-radius: 20px;
   }
 }
