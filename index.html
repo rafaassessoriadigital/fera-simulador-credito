@@ -13,8 +13,8 @@
   <meta property="og:url" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/">
   <meta property="og:title" content="Fera Simulador de Crédito • Visão de Águia">
   <meta property="og:description" content="Simule valores, prazos e encontre a linha de crédito certa para o seu voo com precisão e agilidade.">
-  <meta property="og:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=10">
-  <meta property="og:image:secure_url" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=10">
+  <meta property="og:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=14">
+  <meta property="og:image:secure_url" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=14">
   <meta property="og:image:type" content="image/png">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
@@ -23,9 +23,9 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Fera Simulador de Crédito • Visão de Águia">
   <meta name="twitter:description" content="Simule valores, prazos e encontre a linha de crédito certa para o seu voo com precisão e agilidade.">
-  <meta name="twitter:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=10">
+  <meta name="twitter:image" content="https://rafaassessoriadigital.github.io/fera-simulador-credito/fundo-fera.png?v=14">
 
-  <link rel="stylesheet" href="style.css?v=10">
+  <link rel="stylesheet" href="style.css?v=14">
 </head>
 <body class="tema-aguia">
 
@@ -40,10 +40,10 @@
     </header>
 
     <!-- ETAPA 1: VALORES E PRAZO -->
-    <main class="card-app" id="etapa-1">
+    <main class="card-app modo-sobreposto" id="etapa-1">
       <div class="step-indicator">🦅 Rota 1 de 3 • Envergadura e Prazo</div>
 
-      <div class="input-group">
+      <div class="input-group grupo-valor">
         <label for="valor-range">Qual altitude de crédito você precisa?</label>
         <div class="valor-display" id="valor-display">R$ 3.000,00</div>
         <input type="range" id="valor-range" min="300" max="50000" step="100" value="3000">
@@ -53,7 +53,7 @@
         </div>
       </div>
 
-      <div class="input-group">
+      <div class="input-group grupo-parcelas">
         <label>Em quantas parcelas deseja conduzir o voo?</label>
         <div class="parcelas-grid" id="parcelas-grid">
           <button type="button" class="parcela-btn" data-meses="6">6x</button>
@@ -67,11 +67,11 @@
 
       <div class="estimativa-box">
         <span>Parcela estimada no radar:</span>
-        <strong id="parcela-estimada">R$ 168,50 / mês</strong>
+        <strong id="parcela-estimada">R$ 162,23 / mês</strong>
         <small>*Estimativa inicial. A taxa final varia conforme convênio e análise.</small>
       </div>
 
-      <button type="button" class="btn-primary" onclick="irParaEtapa(2)">
+      <button type="button" class="btn-primary btn-avancar-etapa1" onclick="irParaEtapa(2)">
         🦅 Mirar Perfil de Crédito →
       </button>
     </main>
@@ -237,6 +237,6 @@
     </footer>
   </div>
 
-  <script src="script.js?v=10"></script>
+  <script src="script.js?v=14"></script>
 </body>
 </html>
