@@ -142,23 +142,23 @@ async function resolverConsultorNoServidor(payload) {
 
 function atualizarLinkWhatsApp(consultorEscolhido, dadosFicha) {
   const mensagemWhats =
-    `Olá ${consultorEscolhido.nome}! Segue minha ficha completa do *Fera Simulador de Crédito*:%0A%0A` +
-    `*--- SIMULAÇÃO ---*%0A` +
-    `*Valor desejado:* ${dadosFicha.valorFormatado}%0A` +
+    `🦅 Olá ${consultorEscolhido.nome}! Segue minha ficha do *Fera Simulador (Visão de Águia)*:%0A%0A` +
+    `*--- ROTA DE SIMULAÇÃO ---*%0A` +
+    `*Altitude desejada:* ${dadosFicha.valorFormatado}%0A` +
     `*Prazo:* ${dadosFicha.prazoFormatado}%0A` +
-    `*Perfil:* ${dadosFicha.modalidade}%0A` +
+    `*Linha no radar:* ${dadosFicha.modalidade}%0A` +
     `*Situação CPF:* ${dadosFicha.textoCpfStatus}%0A%0A` +
-    `*--- DADOS PESSOAIS ---*%0A` +
+    `*--- IDENTIFICAÇÃO ---*%0A` +
     `*Nome:* ${dadosFicha.nome}%0A` +
     `*CPF:* ${dadosFicha.cpfNum}%0A` +
     `*Nascimento:* ${dadosFicha.dataNascFormatada}%0A` +
     `*Celular:* ${dadosFicha.celular}%0A` +
     `*E-mail:* ${dadosFicha.email}%0A%0A` +
-    `*--- ENDEREÇO ---*%0A` +
+    `*--- BASE / ENDEREÇO ---*%0A` +
     `*CEP:* ${dadosFicha.cep}%0A` +
     `*Endereço:* ${dadosFicha.logradouro}, Nº ${dadosFicha.numero} (${dadosFicha.complemento})%0A` +
     `*Bairro:* ${dadosFicha.bairro} - ${dadosFicha.cidade}/${dadosFicha.uf}%0A%0A` +
-    `Aguardo o retorno da consulta!`;
+    `Aguardo o retorno da análise!`;
 
   const btnWhats = document.getElementById("btn-whatsapp");
   if (btnWhats) {
@@ -201,22 +201,22 @@ async function gerarResultado() {
 
   if (perfil === "inss") {
     modalidade = "Consignado INSS (Taxa Reduzida)";
-    orientacao = "Mesmo com restrição no CPF, aposentados e pensionistas possuem liberação rápida com desconto direto na folha.";
+    orientacao = "Com visão de longo alcance, mesmo com restrição no CPF, aposentados e pensionistas contam com liberação ágil descontada em folha.";
   } else if (perfil === "clt_fgts") {
     modalidade = "Antecipação Saque-Aniversário FGTS";
-    orientacao = "Liberação rápida sem parcelas mensais no bolso, descontado direto do saldo do FGTS (aceita negativados).";
+    orientacao = "Voo direto sem parcelas mensais no bolso, descontado do saldo FGTS (inclusive para negativados).";
   } else if (perfil === "clt_consignado") {
     modalidade = "Crédito do Trabalhador (Consignado CLT)";
-    orientacao = "Linha com desconto em folha para trabalhadores de carteira assinada. Vamos consultar sua margem disponível.";
+    orientacao = "Linha com desconto em folha para carteira assinada. Vamos rastrear sua margem disponível.";
   } else if (perfil === "servidor") {
     modalidade = "Consignado Servidor Público";
-    orientacao = "Condições diferenciadas e prazos estendidos para servidores públicos ativos e inativos.";
+    orientacao = "Condições firmes e prazos estendidos para servidores públicos ativos e inativos.";
   } else if (perfil === "bolsa_familia") {
     modalidade = "Crédito Beneficiário (BPC / Bolsa Família)";
-    orientacao = "Vamos verificar as financeiras parceiras com margem e liberação ativa para o seu benefício hoje.";
+    orientacao = "Vamos verificar no radar as financeiras parceiras com margem ativa para o seu benefício.";
   } else {
     modalidade = situacaoCpf === "limpo" ? "Crédito Pessoal / Microcrédito" : "Microcrédito / Análise Especial";
-    orientacao = "Vamos consultar nas nossas financeiras parceiras qual linha aprova o valor desejado para o seu CPF.";
+    orientacao = "Vamos mapear nas financeiras parceiras qual linha encaixa no valor desejado para o seu CPF.";
   }
 
   const valorFormatado = formatarMoeda(valorSelecionado);
@@ -257,11 +257,11 @@ async function gerarResultado() {
   }
 
   const btnAvancar = document.querySelector("#etapa-3 .btn-primary");
-  const textoOriginalBtn = btnAvancar ? btnAvancar.textContent : "Ver Liberação →";
+  const textoOriginalBtn = btnAvancar ? btnAvancar.textContent : "🦅 Liberar Alvo →";
   enviandoFicha = true;
   if (btnAvancar) {
     btnAvancar.disabled = true;
-    btnAvancar.textContent = "Gerando ficha...";
+    btnAvancar.textContent = "Rastreando ficha...";
   }
 
   try {
